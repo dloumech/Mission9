@@ -1,0 +1,24 @@
+﻿@{
+}
+
+@model BooksViewModel
+
+<h1>Darby's Bookstore</h1>
+
+@foreach (Book b in Model.Books)
+{ 
+    <h3>@b.Title</h3>
+
+    <ul>
+        <li>Author: @b.Author</li>
+        <li>Publisher: @b.Publisher</li>
+        <li>ISBN: @b.Isbn</li>
+        <li>Classification/Category: @b.Category</li>
+        <li>Number of Pages: @b.PageCount pages </li>
+        <li>Price:$@b.Price </li>
+    </ul>
+
+}
+
+
+<div page-model="@Model.PageInfo" page-action="Index"></div>
