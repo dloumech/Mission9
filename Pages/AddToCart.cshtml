@@ -3,6 +3,9 @@
 @{
 }
 <h2>Your Basket</h2>
+<!--
+    I added a Bootstrap alert on this page
+-->
 
 <table class="table table-bordered table-striped">
 
@@ -34,6 +37,10 @@
         </tr>
     </tfoot>
 </table> 
+
+<div class="alert alert-success">
+    <strong>This book was added to your cart</strong>
+</div>
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
