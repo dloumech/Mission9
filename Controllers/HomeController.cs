@@ -17,20 +17,23 @@ namespace Mission9.Controllers
             repo = temp;
         }
 
-        public IActionResult Index(int PageNum = 1)
+        public IActionResult Index(string bookCategory, int PageNum = 1)
         {
             int numBooks = 10;
 
             var x = new BooksViewModel
             {
                 Books = repo.Books
+                .Where(b =>b.Category == bookCategory || bookCategory == null)
                 .OrderBy(b => b.Title)
                 .Skip((PageNum - 1) * numBooks)
                 .Take(numBooks),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks = (bookCategory == null 
+                                        ? repo.Books.Count() 
+                                        : repo.Books.Where(x => x.Category == bookCategory).Count()),
                     BPerPage = numBooks,
                     CurrentPage = PageNum
                 }
